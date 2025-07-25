@@ -15,21 +15,38 @@
 
     body {
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+      background: radial-gradient(circle at center, #1f1f1f, #0f0f0f);
       color: #f0f0f0;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('https://i.imgur.com/8pQe8OE.png'); /* faint smoke overlay */
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.06;
+      z-index: 0;
     }
 
     header {
       text-align: center;
       padding: 3rem 1rem;
-      background: rgba(0, 0, 0, 0.8);
-      animation: fadeInDown 1.5s ease;
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: #8afff5;
+      text-shadow: 0 0 10px #8afff5, 0 0 20px #6cf6f9;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
     .profile-pic {
@@ -38,11 +55,15 @@
       border: 3px solid #8afff5;
       margin: 2rem auto;
       display: block;
+      position: relative;
+      z-index: 1;
     }
 
     .section {
       padding: 2rem;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .tags {
@@ -62,11 +83,25 @@
       animation: fadeInUp 1s ease;
     }
 
+    .bio {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 1rem;
+      line-height: 1.6;
+      animation: typewriter 4s steps(60, end);
+      white-space: pre-wrap;
+      border-left: 2px solid #8afff5;
+      padding-left: 1rem;
+    }
+
     footer {
       text-align: center;
       padding: 2rem 1rem;
       background: #000;
       font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
     }
 
     a {
@@ -78,10 +113,9 @@
       text-decoration: underline;
     }
 
-    /* Animations */
-    @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #8afff5; }
+      to { text-shadow: 0 0 20px #6cf6f9; }
     }
 
     @keyframes fadeInUp {
@@ -89,13 +123,31 @@
       to {opacity: 1; transform: translateY(0);}
     }
 
-    /* Easter egg */
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
     .easter-egg {
       color: #111;
       font-size: 0.5rem;
       position: absolute;
       bottom: 5px;
       right: 10px;
+      z-index: 1;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      padding-top: 1rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid #8afff5;
     }
   </style>
 </head>
@@ -104,6 +156,10 @@
     <h1>Zx Lynx</h1>
     <img src="profile_image.png" alt="Zx Lynx" class="profile-pic">
   </header>
+
+  <div class="section bio">
+    Moi c'est Lynx. La vérité ? Je ne sais pas trop quoi mettre en bio, mais c’est pas grave. Ce site est simplement un petit aperçu de moi, de ce que je fais, etc... Il y aura principalement des photos souvenirs de moments passés sur des jeux ou juste des trucs que je poste parce que j'aime ça. Voilà, bref, bonne visite sur mon petit site.
+  </div>
 
   <div class="section">
     <h2>Centres d'intérêt</h2>
@@ -123,6 +179,17 @@
   <div class="section">
     <h2>Rejoins-moi sur Discord</h2>
     <p><a href="https://discord.gg/mPSsTmYvNm" target="_blank">Serveur chill entre potes</a></p>
+    <p><a href="https://steamcommunity.com/id/ZXlynx/" target="_blank">Mon profil Steam</a></p>
+  </div>
+
+  <div class="section">
+    <h2>Screen</h2>
+    <p>Voici quelques screens que je poste pour le fun :</p>
+    <div class="gallery">
+      <!-- Tu peux ajouter tes images ici, exemple ci-dessous -->
+      <!-- <img src="mon_image1.jpg" alt="Screen 1"> -->
+      <!-- <img src="mon_image2.jpg" alt="Screen 2"> -->
+    </div>
   </div>
 
   <footer>
